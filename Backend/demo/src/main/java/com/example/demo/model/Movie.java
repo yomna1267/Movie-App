@@ -1,0 +1,32 @@
+package com.example.demo.model;
+
+import java.io.Serializable;
+import java.util.List;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "movies")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Movie implements Serializable {
+    @Id
+    Long id;
+    Long omdb_id;
+    String title;
+    String year;
+    String genre;
+    String director;
+    Long runtime;
+
+    @ManyToOne
+    @JoinColumn(name = "added_by")
+    private Users addedBy;
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private List<Rating> ratings;
+}
