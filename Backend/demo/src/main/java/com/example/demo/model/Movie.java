@@ -15,14 +15,17 @@ import lombok.NoArgsConstructor;
 @Data
 public class Movie implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    Long omdb_id;
+    String imdbId;
     String title;
     String year;
     String genre;
     String director;
-    Long runtime;
-
+    String runtime;
+    String actors;
+    String language;
+    String releaseDate;
     @ManyToOne
     @JoinColumn(name = "added_by")
     private Users addedBy;

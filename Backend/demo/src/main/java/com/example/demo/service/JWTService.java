@@ -7,6 +7,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -21,22 +23,16 @@ import java.util.function.Function;
 
 @Service
 public class JWTService {
-    private String secretkey = "";
-    private final UserRepository userRepository;
+    @Value("${secret.key}")
+    private String secretkey;
 
-    public JWTService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-        try {
-            KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
-            secretkey = Base64.getEncoder().encodeToString(keyGen.generateKey().getEncoded());
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public String generateToken(String username) {
-        Users user = userRepository.findByUsername(username);
+        Users user =  userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Admin not found"));
         Map<String, Object> claims = new HashMap<>();
         claims.put("sub", username);
         claims.put("id", user.getId());
@@ -46,7 +42,7 @@ public class JWTService {
                 .add(claims)
                 .subject(username)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 60 * 60 * 60))
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
                 .and()
                 .signWith(getKey())
                 .compact();

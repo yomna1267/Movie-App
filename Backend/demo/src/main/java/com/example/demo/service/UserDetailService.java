@@ -18,10 +18,8 @@ public class UserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user = userRepository.findByUsername(username);
-        if(user == null) {
-            throw new UsernameNotFoundException(username);
-        }
+        Users user =  userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Admin not found"));
         return User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
