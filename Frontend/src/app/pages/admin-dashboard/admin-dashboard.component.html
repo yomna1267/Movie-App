@@ -1,0 +1,75 @@
+<div class="admin-dashboard">
+
+  <section class="search-section">
+    <h2>Search Movies (OMDB)</h2>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Enter movie title"
+      (keyup.enter)="onSearch()"
+    />
+    <button (click)="onSearch()">Search</button>
+
+    <div *ngIf="searchResults.length > 0" class="search-results">
+      <h3>Search Results</h3>
+        <button
+          (click)="addMoviesBatch()"
+          [disabled]="!canAddBatch"
+        >
+          Add Selected Movies (Batch)
+        </button>
+
+
+      <ul>
+        <li *ngFor="let movie of searchResults">
+          <input
+            type="checkbox"
+            [(ngModel)]="movie.selected"
+            (change)="toggleSearchMovieSelection(movie)"
+            id="search-{{ movie.imdbID }}"
+          />
+          <label for="search-{{ movie.imdbID }}">
+            {{ movie.Title }} ({{ movie.Year }}) [{{ movie.Type }}]
+          </label>
+          <button (click)="addMovie(movie.imdbID)">Add</button>
+        </li>imdbID
+      </ul>
+    </div>
+  </section>
+
+  <hr />
+
+
+
+  <section class="app-movies-section">
+    <h2>Movies in App Database</h2>
+
+    <button
+      (click)="deleteMoviesBatch()"
+      [disabled]="!canDeleteBatch"
+    >
+      Delete Selected Movies (Batch)
+    </button>
+
+    <ul>
+      <li *ngFor="let movie of appMovies">
+        <input
+          type="checkbox"
+          [(ngModel)]="movie.selected"
+          (change)="toggleAppMovieSelection(movie)"
+          id="app-{{ movie.imdbId }}"
+        />
+        <label for="app-{{ movie.imdbId }}">
+          {{ movie.title }} ({{ movie.year }}) [{{ movie.type }}]
+        </label>
+        <button
+          (click)="deleteMovie(movie.imdbId)"
+        >
+          Delete
+        </button>
+      </li>
+    </ul>
+  </section>
+
+
+</div>
