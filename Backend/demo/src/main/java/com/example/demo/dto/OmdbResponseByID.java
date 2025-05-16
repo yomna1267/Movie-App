@@ -11,6 +11,9 @@ public class OmdbResponseByID {
     @JsonProperty("Year")
     private String year;
 
+    @JsonProperty("Type")
+    private String type;
+
     @JsonProperty("Genre")
     private String genre;
 
@@ -31,4 +34,8 @@ public class OmdbResponseByID {
 
     @JsonProperty("imdbID")
     private String imdbID;
+
+    @JsonProperty("Rated")
+    private String rated;
+
 }

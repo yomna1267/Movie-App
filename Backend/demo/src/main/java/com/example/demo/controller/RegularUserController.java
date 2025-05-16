@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.MovieDTO;
 import com.example.demo.mapper.MovieMapper;
+import com.example.demo.model.Movie;
 import com.example.demo.repository.MovieRepository;
 import com.example.demo.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 @RestController
 @PreAuthorize("hasRole('USER')")
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:4200")
 public class RegularUserController {
 
     @Autowired
@@ -26,16 +28,13 @@ public class RegularUserController {
     RatingService ratingService;
 
     @GetMapping("/search")
-    public ResponseEntity<List<MovieDTO>> search(@RequestParam String term) {
-        List<MovieDTO> results = movieRepository.findByTitleContainingIgnoreCase(term)
-                .stream()
-                .map(movieMapper::mapToDTO)
-                .collect(Collectors.toList());
+    public ResponseEntity<List<Movie>> search(@RequestParam String term) {
+        List<Movie> results = movieRepository.findByTitleContainingIgnoreCase(term);
         return ResponseEntity.ok(results);
     }
     @PostMapping("/rate")
-    public ResponseEntity<?> rateMovie(@RequestParam Long movieId, @RequestParam int ratingValue) {
-        String message = ratingService.rateMovie(movieId, ratingValue);
+    public ResponseEntity<?> rateMovie(@RequestParam String imdbID, @RequestParam int ratingValue) {
+        String message = ratingService.rateMovie(imdbID, ratingValue);
         return ResponseEntity.ok(Map.of("message", message));
     }
 

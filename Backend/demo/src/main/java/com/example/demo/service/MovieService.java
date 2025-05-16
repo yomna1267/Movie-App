@@ -48,7 +48,5 @@ public class MovieService {
         throw new RuntimeException("No movies found.");
     }
 
-    public List<Movie> getAllMovies() {
-        return movieRepository.findAll();
-    }
+
 }

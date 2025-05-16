@@ -6,10 +6,7 @@ import com.example.demo.model.Movie;
 import com.example.demo.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,24 +14,24 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/movies")
+@CrossOrigin(origins = "http://localhost:4200")
 public class MovieController {
     @Autowired
     MovieMapper movieMapper;
     @Autowired
     MovieRepository movieRepository;
     @GetMapping
-    public List<MovieDTO> getAllMovies() {
-        return movieRepository.findAll()
-                .stream()
-                .map(movieMapper::mapToDTO)
-                .collect(Collectors.toList());
+    public List<Movie> getAllMovies() {
+        System.out.println("getAllMovies");
+        List<Movie> movies = movieRepository.findAll();
+        return movies;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<MovieDTO> getMovieById(@PathVariable Long id) {
-        Optional<Movie> movie = movieRepository.findById(id);
+    @GetMapping("/{imdbID}")
+    public ResponseEntity<Movie> getMovieById(@PathVariable String imdbID) {
+        Optional<Movie> movie = movieRepository.findByImdbId(imdbID);
         if (movie.isPresent()) {
-            return ResponseEntity.ok(movieMapper.mapToDTO(movie.get()));
+            return ResponseEntity.ok(movie.get());
         }
         return ResponseEntity.notFound().build();
     }

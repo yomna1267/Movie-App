@@ -12,6 +12,7 @@ public class MovieMapper {
         Movie movie = new Movie();
         movie.setTitle(omdbResponseByID.getTitle());
         movie.setYear(omdbResponseByID.getYear());
+        movie.setType(omdbResponseByID.getType());
         movie.setGenre(omdbResponseByID.getGenre());
         movie.setDirector(omdbResponseByID.getDirector());
         movie.setActors(omdbResponseByID.getActors());
@@ -19,6 +20,7 @@ public class MovieMapper {
         movie.setLanguage(omdbResponseByID.getLanguage());
         movie.setReleaseDate(omdbResponseByID.getReleased());
         movie.setImdbId(omdbResponseByID.getImdbID());
+        movie.setRated(omdbResponseByID.getRated());
         return movie;
     }
 
@@ -26,7 +28,7 @@ public class MovieMapper {
         MovieDTO movieDTO = new MovieDTO();
         movieDTO.setTitle(movie.getTitle());
         movieDTO.setYear(movie.getYear());
-        movieDTO.setType(movie.getGenre());
+        movieDTO.setType(movie.getType());
         movieDTO.setImdbID(movie.getImdbId());
         return movieDTO;
     }

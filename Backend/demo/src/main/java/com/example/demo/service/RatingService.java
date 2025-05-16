@@ -27,7 +27,7 @@ public class RatingService {
     RatingRepository ratingRepository;
 
     @Transactional
-    public String rateMovie(Long movieId, int value) {
+    public String rateMovie(String movieId, int value) {
         if (value < 1 || value > 5) {
             throw new IllegalArgumentException("Rating must be between 1 and 10");
         }
@@ -38,7 +38,7 @@ public class RatingService {
         Users user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        Movie movie = movieRepository.findById(movieId)
+        Movie movie = movieRepository.findByImdbId(movieId)
                 .orElseThrow(() -> new RuntimeException("Movie not found"));
 
         Optional<Rating> existing = ratingRepository.findByUserAndMovie(user, movie);

@@ -45,8 +45,7 @@ public class UserService {
         Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         if (authentication.isAuthenticated()) {
             return jwtService.generateToken(user.getUsername());
-        } else {
-            return "Invalid Credentials";
         }
+        throw new RuntimeException("Invalid username or password");
     }
 }
