@@ -1,5 +1,4 @@
 <div class="admin-dashboard">
-
   <section class="search-section">
     <h2>Search Movies (OMDB)</h2>
     <input
@@ -11,14 +10,9 @@
     <button (click)="onSearch()">Search</button>
 
     <div *ngIf="searchResults.length > 0" class="search-results">
-      <h3>Search Results</h3>
-        <button
-          (click)="addMoviesBatch()"
-          [disabled]="!canAddBatch"
-        >
-          Add Selected Movies (Batch)
-        </button>
-
+      <button (click)="addMoviesBatch()" [disabled]="!canAddBatch">
+        Add Selected Movies (Batch)
+      </button>
 
       <ul>
         <li *ngFor="let movie of searchResults">
@@ -32,22 +26,17 @@
             {{ movie.Title }} ({{ movie.Year }}) [{{ movie.Type }}]
           </label>
           <button (click)="addMovie(movie.imdbID)">Add</button>
-        </li>imdbID
+        </li>
       </ul>
     </div>
   </section>
 
   <hr />
 
-
-
   <section class="app-movies-section">
     <h2>Movies in App Database</h2>
 
-    <button
-      (click)="deleteMoviesBatch()"
-      [disabled]="!canDeleteBatch"
-    >
+    <button (click)="deleteMoviesBatch()" [disabled]="!canDeleteBatch">
       Delete Selected Movies (Batch)
     </button>
 
@@ -62,14 +51,10 @@
         <label for="app-{{ movie.imdbId }}">
           {{ movie.title }} ({{ movie.year }}) [{{ movie.type }}]
         </label>
-        <button
-          (click)="deleteMovie(movie.imdbId)"
-        >
+        <button (click)="deleteMovie(movie.imdbId)" class="delete-button">
           Delete
         </button>
       </li>
     </ul>
   </section>
-
-
 </div>

@@ -48,6 +48,17 @@ export class UserDashboardComponent implements OnInit{
 
   toggleDetails(movie: Movie): void {
     movie.showDetails = !movie.showDetails;
+    if (movie.showDetails) {
+        this.userService.getUserRating(movie.imdbId).subscribe({
+        next: (res) => movie.userRating = res.rate,
+        error: (err) => console.error('Error getting user rating:', err)
+      });
+
+      this.userService.getAverageRating(movie.imdbId).subscribe({
+        next: (res) => movie.averageRating = res.avgRate,
+        error: (err) => console.error('Error getting average rating:', err)
+      });
+    }
   }
 
   rateMovie(movie: Movie): void {
@@ -59,7 +70,11 @@ export class UserDashboardComponent implements OnInit{
 
     this.userService.rateMovie(movie.imdbId, movie.userRating).subscribe({
       next: (res) => {
-        this.message = res.message || 'Rated successfully!';
+        this.message = res.message;
+        this.userService.getAverageRating(movie.imdbId).subscribe({
+        next: (res) => movie.averageRating = res.avgRate,
+        error: (err) => console.error('Error getting average rating:', err)
+      });
         alert(this.message);
       },
       error: (err) => {
@@ -69,5 +84,7 @@ export class UserDashboardComponent implements OnInit{
       }
     });
   }
+
+
 
 }

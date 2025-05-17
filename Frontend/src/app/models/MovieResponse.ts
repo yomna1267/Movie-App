@@ -10,9 +10,11 @@ export interface Movie {
   actors: string;
   language: string;
   releaseDate: string;
-  rated?: string;
+  rated: string;
 
   userRating?: number;
   showDetails?: boolean;
   selected?: boolean;
+  averageRating?: number;
+  hover?: number;
 }

@@ -29,6 +29,21 @@ export class UserService {
       }
     );
   }
+  getUserRating(imdbId: string): Observable<{ rate: number }> {
+    const token = localStorage.getItem('token');
+    return this.http.get<{ rate: number }>(`${this.apiUrl}/rate`, {
+      params: { imdbID: imdbId },
+      headers: { Authorization: `Bearer ${token}` }
+    });
+  }
+
+  getAverageRating(imdbId: string): Observable<{ avgRate: number }> {
+    const token = localStorage.getItem('token');
+    return this.http.get<{ avgRate: number }>(`${this.apiUrl}/rate/all`, {
+      params: { imdbID: imdbId },
+      headers: { Authorization: `Bearer ${token}` }
+    });
+  }
 
 
   searchMovies(term: string) {

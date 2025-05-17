@@ -1,7 +1,6 @@
 <div class="user-dashboard">
-  <h2 class="centered-title">Movie Library</h2>
+  <h2 class="centered-title">Movies Library</h2>
 
-  <!-- Search Section -->
   <div class="search-section">
     <input
       type="text"
@@ -11,7 +10,6 @@
     <button (click)="searchMovies()">Search</button>
   </div>
 
-  <!-- Movie List -->
   <div *ngFor="let movie of movies" class="movie-card">
     <h3>{{ movie.title }}</h3>
     <p><strong>Type:</strong> {{ movie.type }}</p>
@@ -21,7 +19,6 @@
       {{ movie.showDetails ? 'Hide Details' : 'More Details' }}
     </button>
 
-    <!-- Full Movie Details -->
     <div *ngIf="movie.showDetails" class="details">
       <div class="detail-grid">
         <p><strong>Year:</strong> {{ movie.year }}</p>
@@ -30,21 +27,28 @@
         <p><strong>Actors:</strong> {{ movie.actors }}</p>
         <p><strong>Language:</strong> {{ movie.language }}</p>
         <p><strong>Release Date:</strong> {{ movie.releaseDate }}</p>
-        <!-- <p *ngIf="movie.rated"><strong>Rated:</strong> {{ movie.rated }}</p> -->
       </div>
 
       <div class="rating-section">
-        <label>Rate this movie (1-5):</label>
-        <input
-          type="number"
-          [(ngModel)]="movie.userRating"
-          min="1"
-          max="5"
-        />
-        <button (click)="rateMovie(movie)">Rate</button>
-      </div>
-    </div>
+        <div class="rating-info">
+          <p><strong>Your Rating:</strong> {{ movie.userRating || 'Not rated yet' }}</p>
+          <p><strong>Average Rating:</strong> {{ movie.averageRating?.toFixed(1) || 'N/A' }}</p>
+        </div>
 
-    <hr />
+        <div class="rating-input">
+          <div class="stars">
+            <span
+              *ngFor="let star of [1, 2, 3, 4, 5]"
+              (click)="movie.userRating = star"
+              [class.filled]="star <= (movie.userRating ?? 0)"
+              >&#9733;</span
+            >
+          </div>
+          <button (click)="rateMovie(movie)">Rate</button>
+        </div>
+      </div>
+
+      <hr />
+    </div>
   </div>
 </div>

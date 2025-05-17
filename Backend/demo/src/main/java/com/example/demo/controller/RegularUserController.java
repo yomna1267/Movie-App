@@ -38,4 +38,16 @@ public class RegularUserController {
         return ResponseEntity.ok(Map.of("message", message));
     }
 
+    @GetMapping("/rate")
+    public ResponseEntity<?> getUserRating(@RequestParam String imdbID) {
+        int rate = ratingService.getUserRating(imdbID);
+        return ResponseEntity.ok(Map.of("rate", rate));
+    }
+
+    @GetMapping("/rate/all")
+    public ResponseEntity<?> getAverageRating(@RequestParam String imdbID) {
+        double rate = ratingService.getAverageRating(imdbID);
+        return ResponseEntity.ok(Map.of("avgRate", rate));
+    }
+
 }
