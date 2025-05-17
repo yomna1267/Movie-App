@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.MovieDTO;
 import com.example.demo.dto.OmdbResponseByID;
 import com.example.demo.dto.OmdbSearchResponse;
+import com.example.demo.exceptions.MovieNotFoundException;
 import com.example.demo.model.Movie;
 import com.example.demo.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class MovieService {
             return response.getSearch();
         }
 
-        throw new RuntimeException("No movies found.");
+        throw new MovieNotFoundException("No movies found.");
     }
 
 
@@ -45,7 +46,7 @@ public class MovieService {
         if (response != null) {
             return response;
         }
-        throw new RuntimeException("No movies found.");
+        throw new MovieNotFoundException("No movies found.");
     }
 
 

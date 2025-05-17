@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.exceptions.UserNotFoundException;
 import com.example.demo.model.Users;
 import com.example.demo.repository.UserRepository;
 import io.jsonwebtoken.Claims;
@@ -32,7 +33,7 @@ public class JWTService {
 
     public String generateToken(String username) {
         Users user =  userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("Admin not found"));
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
         Map<String, Object> claims = new HashMap<>();
         claims.put("sub", username);
         claims.put("id", user.getId());

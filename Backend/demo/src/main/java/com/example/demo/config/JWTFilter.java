@@ -1,7 +1,7 @@
 package com.example.demo.config;
 
 import com.example.demo.service.JWTService;
-import com.example.demo.service.UserDetailService;
+import com.example.demo.service.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,7 +24,7 @@ public class JWTFilter extends OncePerRequestFilter {
     private JWTService jwtService;
 
     @Autowired
-    private UserDetailService userDetailService;
+    private UserDetailsServiceImpl userDetailService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

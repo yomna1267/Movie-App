@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.exceptions.InvalidRatingException;
+import com.example.demo.exceptions.MovieNotFoundException;
+import com.example.demo.exceptions.UserNotFoundException;
 import com.example.demo.model.Movie;
 import com.example.demo.model.Rating;
 import com.example.demo.model.Users;
@@ -33,10 +36,10 @@ public class RatingService {
         String username = auth.getName();
 
         Users user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
 
         Movie movie = movieRepository.findByImdbId(movieId)
-                .orElseThrow(() -> new RuntimeException("Movie not found"));
+                .orElseThrow(() -> new MovieNotFoundException("Movie not found"));
 
         return Pair.of(user, movie);
     }
@@ -44,7 +47,7 @@ public class RatingService {
     @Transactional
     public String rateMovie(String movieId, int value) {
         if (value < 1 || value > 5) {
-            throw new IllegalArgumentException("Rating must be between 1 and 10");
+            throw new InvalidRatingException("Rating must be between 1 and 10");
         }
 
         var pair = getUserAndMovie(movieId);
@@ -84,11 +87,7 @@ public class RatingService {
             }
             return 0.0;
         }
-        throw new RuntimeException("Movie not found");
+        throw new MovieNotFoundException("Movie not found");
 
     }
-
-
-
-
 }

@@ -3,11 +3,12 @@
 
   <div class="search-section">
     <input
-      type="text"
-      [(ngModel)]="searchTerm"
-      placeholder="Search by title"
-    />
-    <button (click)="searchMovies()">Search</button>
+    type="text"
+    [(ngModel)]="searchTerm"
+    (ngModelChange)="searchMovies()"
+    placeholder="Filter by title"
+  />
+  <!-- <button (click)="searchMovies()">Search</button> -->
   </div>
 
   <div *ngFor="let movie of movies" class="movie-card">

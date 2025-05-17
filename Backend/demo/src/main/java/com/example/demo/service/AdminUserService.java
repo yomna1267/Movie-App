@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.OmdbResponseByID;
+import com.example.demo.exceptions.MovieNotFoundException;
+import com.example.demo.exceptions.UserNotFoundException;
 import com.example.demo.mapper.MovieMapper;
 import com.example.demo.model.Movie;
 import com.example.demo.model.Users;
@@ -35,11 +37,13 @@ public class AdminUserService {
         }
         OmdbResponseByID omdbResponseByID = movieService.getMovieByID(imdbID);
         System.out.println("OMDB Type: " + omdbResponseByID.getType());
+        if(omdbResponseByID.getImdbID() == null)
+            throw new MovieNotFoundException("Movie with imdbID " + imdbID + " not found.");
         Movie movie = movieMapper.mapToEntity(omdbResponseByID);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         Users currentUser =  userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("Admin not found"));
+                .orElseThrow(() -> new UserNotFoundException("Admin not found"));
         movie.setAddedBy(currentUser);
 
         movieRepository.save(movie);
@@ -52,7 +56,7 @@ public class AdminUserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         Users currentUser = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("Admin not found"));
+                .orElseThrow(() -> new UserNotFoundException("Admin not found"));
         for (String imdbID : imdbIDs) {
             Optional<Movie> found = movieRepository.findByImdbId(imdbID);
             if (found.isPresent()) {
@@ -70,7 +74,7 @@ public class AdminUserService {
     @Transactional
     public String deleteMovie(String imdbID) {
         Movie movie = movieRepository.findByImdbId(imdbID)
-                .orElseThrow(() -> new RuntimeException("Movie with ID " + imdbID + " not found"));
+                .orElseThrow(() -> new MovieNotFoundException("Movie with ID " + imdbID + " not found"));
         movieRepository.delete(movie);
         return "Movie removed successfully";
     }
@@ -78,7 +82,7 @@ public class AdminUserService {
     @Transactional
     public String deleteMovies(List<String> imdbIDs) {
         for(String id : imdbIDs) {
-            Movie movie = movieRepository.findByImdbId(id).orElseThrow(() -> new RuntimeException("Movie with ID " + id + " not found"));
+            Movie movie = movieRepository.findByImdbId(id).orElseThrow(() -> new MovieNotFoundException("Movie with ID " + id + " not found"));
             movieRepository.delete(movie);
         }
         return "Movie removed successfully";

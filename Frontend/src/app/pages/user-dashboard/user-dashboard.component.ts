@@ -46,6 +46,7 @@ export class UserDashboardComponent implements OnInit{
     }
   }
 
+
   toggleDetails(movie: Movie): void {
     movie.showDetails = !movie.showDetails;
     if (movie.showDetails) {

@@ -1,30 +1,31 @@
-<form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
-  <label for="username">Username</label>
-  <input
-    id="username"
-    name="username"
-    type="text"
-    [(ngModel)]="username"
-    required
-  />
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
+    <label for="username">Username</label>
+    <input
+      id="username"
+      name="username"
+      type="text"
+      [(ngModel)]="username"
+      required
+    />
 
-  <label for="password">Password</label>
-  <input
-    id="password"
-    name="password"
-    type="password"
-    [(ngModel)]="password"
-    required
-  />
+    <label for="password">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      [(ngModel)]="password"
+      required
+    />
 
-  <button type="submit" [disabled]="!loginForm.form.valid">Login</button>
-</form>
+    <button type="submit" [disabled]="!loginForm.form.valid">Login</button>
+  </form>
 
-<div *ngIf="errorMessage" class="error-message">
-  {{ errorMessage }}
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <p class="create-account">
+    Don't have an account?
+    <a routerLink="/register">Create Account</a>
+  </p>
 </div>
-
-<p class="create-account">
-  Don't have an account?
-  <a routerLink="/register">Create Account</a>
-</p>

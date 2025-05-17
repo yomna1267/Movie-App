@@ -11,7 +11,7 @@
 
     <div *ngIf="searchResults.length > 0" class="search-results">
       <button (click)="addMoviesBatch()" [disabled]="!canAddBatch">
-        Add Selected Movies (Batch)
+        Add Selected Movies
       </button>
 
       <ul>
@@ -37,7 +37,7 @@
     <h2>Movies in App Database</h2>
 
     <button (click)="deleteMoviesBatch()" [disabled]="!canDeleteBatch">
-      Delete Selected Movies (Batch)
+      Delete Selected Movies
     </button>
 
     <ul>

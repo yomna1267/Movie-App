@@ -37,9 +37,33 @@ export class RegisterComponent {
           this.router.navigate(['/user-dashboard']);
         },
         error: (err) => {
-          this.errorMessage = err.error?.message || 'Registration failed.';
-          console.error(err);
-          alert(this.errorMessage);
+          const errorData = err.error;
+
+          const extractValidationErrors = (data: any) => {
+            const fields = ['username', 'email', 'password'];
+            return fields
+              .filter(field => data[field])
+              .map(field => data[field])
+              .join(' | ');
+          };
+
+          if (errorData && typeof errorData === 'object') {
+            const validationMessage = extractValidationErrors(errorData);
+            if (validationMessage) {
+              this.errorMessage = validationMessage;
+            }
+            else if (typeof errorData.message === 'string') {
+              this.errorMessage = errorData.message;
+            }
+            else if (typeof errorData.error === 'string') {
+              this.errorMessage = errorData.error;
+            }
+            else {
+              this.errorMessage = 'Registration failed.';
+            }
+          } else {
+            this.errorMessage = 'Registration failed.';
+          }
         },
       });
   }

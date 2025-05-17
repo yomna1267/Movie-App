@@ -6,6 +6,7 @@ import com.example.demo.model.Users;
 import com.example.demo.service.JWTService;
 import com.example.demo.service.RatingService;
 import com.example.demo.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +23,9 @@ public class UserController {
 
     @Autowired
     JWTService jwtService;
+
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody Users user) {
+    public ResponseEntity<?> register(@Valid @RequestBody Users user) {
         Users created = userService.register(user);
         String token = jwtService.generateToken(created.getUsername());
         return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
