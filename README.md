@@ -70,7 +70,7 @@ If you have Docker and Docker Compose installed, you can start the full app with
 
 ```bash
 
-docker-compose up --build
+docker compose up --build
 
 ```
 
