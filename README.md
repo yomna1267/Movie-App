@@ -19,7 +19,6 @@ Regular users can then browse these added movies and view their detailed informa
   - [Frontend Setup and Run](#4-frontend-setup-and-run)
 - [Usage](#usage)
 - [Configuration Summary](#configuration-summary)
-- [Screenshots](#screenshots)
 - [Notes](#notes)
 
 ---
