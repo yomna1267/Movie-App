@@ -74,7 +74,7 @@ docker-compose up --build
 
 ```
 
-This will build and start the backend, frontend, and PostgreSQL database containers.
+This runs without the need for installation of the prerequisites locally, as all services are containerized with Docker.
 
 Backend will be accessible at `http://localhost:8080`.
 
