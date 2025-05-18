@@ -1,0 +1,545 @@
+{
+	"info": {
+		"_postman_id": "49aaabf0-0726-4fc1-83ea-ec80866e67ce",
+		"name": "Fawry Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29781796"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5b21uYSIsInJvbGUiOnsiaWQiOjEsIm5hbWUiOiJBRE1JTiJ9LCJpZCI6MSwiaWF0IjoxNzQ3NTA5MjgzLCJleHAiOjE3NDc1MTI4ODN9.1TeIcZHGWO77zp_oFMtq_1q0nYUNZYyk6xZLbGiBhkYSdQxTsu0S9Uvi0T6g-JQRewm76_gn5mMdUA8ezOh6ow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/admin/search?term=",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"admin",
+								"search"
+							],
+							"query": [
+								{
+									"key": "term",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5b21uYSIsInJvbGUiOnsiaWQiOjEsIm5hbWUiOiJBRE1JTiJ9LCJpZCI6MSwiaWF0IjoxNzQ3NTA5MjgzLCJleHAiOjE3NDc1MTI4ODN9.1TeIcZHGWO77zp_oFMtq_1q0nYUNZYyk6xZLbGiBhkYSdQxTsu0S9Uvi0T6g-JQRewm76_gn5mMdUA8ezOh6ow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/admin/?imdbID=tt1623780",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"admin",
+								""
+							],
+							"query": [
+								{
+									"key": "imdbID",
+									"value": "tt1623780"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5b21uYSIsInJvbGUiOnsiaWQiOjEsIm5hbWUiOiJBRE1JTiJ9LCJpZCI6MSwiaWF0IjoxNzQ3NTA5MjgzLCJleHAiOjE3NDc1MTI4ODN9.1TeIcZHGWO77zp_oFMtq_1q0nYUNZYyk6xZLbGiBhkYSdQxTsu0S9Uvi0T6g-JQRewm76_gn5mMdUA8ezOh6ow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/admin/?imdbID=tt1623780",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"admin",
+								""
+							],
+							"query": [
+								{
+									"key": "imdbID",
+									"value": "tt1623780"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batch",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5b21uYSIsInJvbGUiOnsiaWQiOjEsIm5hbWUiOiJBRE1JTiJ9LCJpZCI6MSwiaWF0IjoxNzQ3NTA5MjgzLCJleHAiOjE3NDc1MTI4ODN9.1TeIcZHGWO77zp_oFMtq_1q0nYUNZYyk6xZLbGiBhkYSdQxTsu0S9Uvi0T6g-JQRewm76_gn5mMdUA8ezOh6ow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/admin/batch?imdbIDs=tt2674426",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"admin",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "imdbIDs",
+									"value": "tt2674426"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batch",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5b21uYSIsInJvbGUiOnsiaWQiOjEsIm5hbWUiOiJBRE1JTiJ9LCJpZCI6MSwiaWF0IjoxNzQ3NTA5MjgzLCJleHAiOjE3NDc1MTI4ODN9.1TeIcZHGWO77zp_oFMtq_1q0nYUNZYyk6xZLbGiBhkYSdQxTsu0S9Uvi0T6g-JQRewm76_gn5mMdUA8ezOh6ow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  \"tt2674426\"\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/admin/batch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"admin",
+								"batch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "All Movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5b21uYSIsInJvbGUiOnsiaWQiOjEsIm5hbWUiOiJBRE1JTiJ9LCJpZCI6MSwiaWF0IjoxNzQ3NTA5MjgzLCJleHAiOjE3NDc1MTI4ODN9.1TeIcZHGWO77zp_oFMtq_1q0nYUNZYyk6xZLbGiBhkYSdQxTsu0S9Uvi0T6g-JQRewm76_gn5mMdUA8ezOh6ow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/movies",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5b21uYSIsInJvbGUiOnsiaWQiOjEsIm5hbWUiOiJBRE1JTiJ9LCJpZCI6MSwiaWF0IjoxNzQ3NTA5MjgzLCJleHAiOjE3NDc1MTI4ODN9.1TeIcZHGWO77zp_oFMtq_1q0nYUNZYyk6xZLbGiBhkYSdQxTsu0S9Uvi0T6g-JQRewm76_gn5mMdUA8ezOh6ow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/movies/tt0892769",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"movies",
+								"tt0892769"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Regular User",
+			"item": [
+				{
+					"name": "Search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZCIsInJvbGUiOnsiaWQiOjIsIm5hbWUiOiJVU0VSIn0sImlkIjozLCJpYXQiOjE3NDc1MDk4NDMsImV4cCI6MTc0NzUxMzQ0M30.uCnV7991YOhcXTqN3Scd9cJltVl1rlyrpNlIAVilFmclICbmMw1vsY_iZLqTazhZWjuSd5He1ZVs6IcUvjgwsQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/search?term=",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"search"
+							],
+							"query": [
+								{
+									"key": "term",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZCIsInJvbGUiOnsiaWQiOjIsIm5hbWUiOiJVU0VSIn0sImlkIjozLCJpYXQiOjE3NDc1MDk4NDMsImV4cCI6MTc0NzUxMzQ0M30.uCnV7991YOhcXTqN3Scd9cJltVl1rlyrpNlIAVilFmclICbmMw1vsY_iZLqTazhZWjuSd5He1ZVs6IcUvjgwsQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/rate?imdbID=tt0080391&ratingValue=5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"rate"
+							],
+							"query": [
+								{
+									"key": "imdbID",
+									"value": "tt0080391"
+								},
+								{
+									"key": "ratingValue",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGFhIiwicm9sZSI6eyJpZCI6MiwibmFtZSI6IlVTRVIifSwiaWQiOjQsImlhdCI6MTc0NzQ0MDEzMywiZXhwIjoxNzQ3NDQzNzMzfQ.13fnguEqJJSyGj9HazmARO_UB9LbZb_iUknwFYQ7SP0HXvPo-FeBvaR8QqDSvyUtHbAh5u9DYXeZaxCKd8R5pg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/rate?imdbID=tt0080391",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"rate"
+							],
+							"query": [
+								{
+									"key": "imdbID",
+									"value": "tt0080391"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Average Rate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGFhIiwicm9sZSI6eyJpZCI6MiwibmFtZSI6IlVTRVIifSwiaWQiOjQsImlhdCI6MTc0NzQ0MDEzMywiZXhwIjoxNzQ3NDQzNzMzfQ.13fnguEqJJSyGj9HazmARO_UB9LbZb_iUknwFYQ7SP0HXvPo-FeBvaR8QqDSvyUtHbAh5u9DYXeZaxCKd8R5pg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/rate/all?imdbID=tt0080391",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"rate",
+								"all"
+							],
+							"query": [
+								{
+									"key": "imdbID",
+									"value": "tt0080391"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"if (response.token) {\r",
+									"  pm.environment.set(\"authToken\", response.token);\r",
+									"  console.log(\"Token saved!\");\r",
+									"} else {\r",
+									"  console.warn(\"Token not found in response\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"yomna\",\r\n    \"password\":\"yomna\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer {{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"basmal\",\r\n    \"email\":\"alaa@gmail.com\",\r\n    \"password\":\"basmala\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
