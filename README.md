@@ -18,8 +18,6 @@ Regular users can then browse these added movies and view their detailed informa
   - [Backend Setup and Run](#3-backend-setup-and-run)
   - [Frontend Setup and Run](#4-frontend-setup-and-run)
 - [Usage](#usage)
-- [Configuration Summary](#configuration-summary)
-- [Screenshots](#screenshots)
 - [Notes](#notes)
 
 ---
@@ -150,13 +148,6 @@ The application has three default users:
 - Regular users can browse movies and view details.
 
 Open `http://localhost:4200` in your browser and log in with one of the above accounts.
-
----
-
-## Configuration Summary
-
-- **PostgreSQL:** Set in `backend/demo/src/main/resources/application.properties`  
-- **Frontend API URLs and keys:** Set in `frontend/src/environments/environment.ts`
 
 ---
 
